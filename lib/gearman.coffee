@@ -98,10 +98,10 @@ class Gearman extends EventEmitter
       @emit "connect"
       @processCommandQueue()
     @reconnecter.on 'disconnect', =>
-      # console.error "GEARMAN #{@uid}: disconnected"
+      console.error "GEARMAN #{@uid}: disconnected" if @debug
       @connected = false
     @reconnecter.on 'reconnect', =>
-      # console.error "GEARMAN #{@uid}: attempting reconnect!"
+      console.error "GEARMAN #{@uid}: attempting reconnect!" if @debug
       @connecting = true
     @reconnecter.connect {host: @host, port: @port}
 
